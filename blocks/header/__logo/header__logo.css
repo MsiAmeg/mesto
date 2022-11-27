@@ -4,9 +4,14 @@
     padding: 0 0 40px 0;
 }
 
+@media screen and (max-width:880px) {
+    .header__logo{
+        padding: 0 0 30px 27px;
+    }
+}
+
 @media screen and (max-width:640px) {
     .header__logo{
         max-width: 104px;
-        padding: 0 0 30px 27px;
     }
 }

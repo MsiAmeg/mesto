@@ -1,0 +1,17 @@
+.card{
+    display: grid;
+    grid-template-areas:
+    "image"
+    "description";
+    max-width: 280px;
+    max-height: 360px;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 580px) {
+    .card{
+        min-height: 280px;
+    }
+}

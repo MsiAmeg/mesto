@@ -1,0 +1,5 @@
+.card__image{
+    width: 100%;
+    box-sizing: border-box;
+    grid-area: image;
+}
