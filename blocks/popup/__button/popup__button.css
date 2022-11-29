@@ -16,6 +16,7 @@
 
 .popup__button:hover{
     opacity: .8;
+    transition: .3s ease-in;
 }
 
 @media screen and (max-width:540px) {

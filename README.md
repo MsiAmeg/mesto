@@ -1,17 +1,14 @@
-# Проект: Место
+# Mesto
+## Fourth Project Yandex Practicum
+What do we learned? &rarr; 
+1. Creating grid cards.
+2. Creating popup.
+3. Adding javascript.  
 
-### Обзор
+![Preview](https://user-images.githubusercontent.com/99011044/204502451-5f64092d-b4f7-45fb-82e9-96f1dd25b040.png)
+### Technologies:  
+* Html
+* Css
+* JavaScript
 
-* Figma
-* Картинки
-
-**Figma**
-
-* [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
-
-**Картинки**
-
-Доставать картинки предстоит из Фигмы. Это расхожая практика, поэтому полезно потренироваться.
-Не забудьте [оптимизировать картинки](https://tinypng.com/), чтобы ваш сайт загружался быстрее.
-
-Удачи!
+## [Website](https://msiameg.github.io/russian-travel/)
