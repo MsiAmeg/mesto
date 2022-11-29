@@ -1,28 +1,28 @@
-.popup__button{
-    min-width: 358px;
-    min-height: 50px;
-    font-family: 'Inter', 'arial', 'sans-serif';
-    margin: 48px 36px 37px;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 22px;
-    text-align: center;
-    border: 0;
-    border-radius: 2px;
-    background-color: black;
-    color: white;
+.popup__button {
+  min-width: 358px;
+  min-height: 50px;
+  font-family: 'Inter', 'arial', 'sans-serif';
+  margin: 48px 36px 37px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  border: 0;
+  border-radius: 2px;
+  background-color: black;
+  color: white;
 }
 
-.popup__button:hover{
-    opacity: .8;
-    transition: .3s ease-in;
+.popup__button:hover {
+  opacity: .8;
+  transition: .3s ease-in;
 }
 
 @media screen and (max-width:540px) {
-    .popup__button{
-        margin: 45px 22px 25px;
-        min-width: 238px;
-        min-height: 46px;
-    }
+  .popup__button {
+    margin: 45px 22px 25px;
+    min-width: 238px;
+    min-height: 46px;
+  }
 }

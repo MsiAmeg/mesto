@@ -1,17 +1,17 @@
-.profile__description{
-    margin: 0;
-    padding: 0;
-    color: white;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 22px;
-    grid-area: info;
+.profile__description {
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  grid-area: info;
 }
 
 @media screen and (max-width:580px) {
-    .profile__description{
-        font-size: 14px;
-        line-height: 17px;
-        text-align: center;
-    }
+  .profile__description {
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+  }
 }

@@ -35,6 +35,7 @@ function openPopup(){
 editButton.addEventListener('click', openPopup);
 closeButton.addEventListener('click', closePopup);
 popupForm.addEventListener('submit', handleFormSubmit);
+
 popup.addEventListener('click', closePopup);
 popupForm.addEventListener('click', function(event){
     event.stopPropagation();

@@ -1,19 +1,19 @@
-.popup__container{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    max-width: 430px;
-    max-height: 330px;
-    background-color: white;
-    border-radius: 10px;
-    margin: 0 auto;
-    padding: 0;
-    align-items: center;
+.popup__container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 430px;
+  max-height: 330px;
+  background-color: white;
+  border-radius: 10px;
+  margin: 0 auto;
+  padding: 0;
+  align-items: center;
 }
 
 @media screen and (max-width:540px) {
-    .popup__container{
-        max-width: 282px;
-        max-height: 322px;
-    }
+  .popup__container {
+    max-width: 282px;
+    max-height: 322px;
+  }
 }
