@@ -5,10 +5,10 @@ What do we learned? &rarr;
 2. Creating popup.
 3. Adding javascript.  
 
-![Preview](https://user-images.githubusercontent.com/99011044/204502451-5f64092d-b4f7-45fb-82e9-96f1dd25b040.png)
+![Preview](https://user-images.githubusercontent.com/99011044/204518012-a83ac570-32af-43e3-8bbd-8be04c3b898b.png)
 ### Technologies:  
 * Html
 * Css
 * JavaScript
 
-## [Website](https://msiameg.github.io/russian-travel/)
+## [Website](https://msiameg.github.io/mesto)
