@@ -1,42 +1,36 @@
 let profileInfo = document.querySelector('.profile__info');
+let profileTitle = profileInfo.querySelector('.profile__title');
+let profileDescription = profileInfo.querySelector('.profile__description');
 let editButton = document.querySelector('.profile__edit-button');
 let closeButton = document.querySelector('.popup__close-button');
 
 let popup = document.querySelector('.popup');
 let popupForm = document.querySelector('.popup__container');
-let nameInput = popup.querySelectorAll('.popup__input')[0];
-let jobInput = popup.querySelectorAll('.popup__input')[1];
-let popupButton = popup.querySelector('.popup__button');
+let nameInput = popup.querySelector('.popup__input_data_name');
+let jobInput = popup.querySelector('.popup__input_data_job');
+let popupSubmitButton = popup.querySelector('.popup__submit-button');
 
-function handleFormSubmit (event) {
-    event.preventDefault(); 
-    
-    let nameInput = popup.querySelectorAll('.popup__input')[0].value;
-    let jobInput = popup.querySelectorAll('.popup__input')[1].value;
-    
-    profileInfo.querySelector('.profile__title').textContent = nameInput;
-    profileInfo.querySelector('.profile__description').textContent = jobInput;
-    closePopup();
+function handleFormSubmit(event) {
+  event.preventDefault();
+
+  profileTitle.textContent = nameInput.value;
+  profileDescription.textContent = jobInput.value;
+  closePopup();
 }
 
-function closePopup(){
-    popup.classList.remove('popup_opened');
+function closePopup() {
+  popup.classList.remove('popup_opened');
 }
 
-function openPopup(){
-    let profileName = profileInfo.querySelector('.profile__title').textContent;
-    let profilejob = profileInfo.querySelector('.profile__description').textContent;
+function openPopup() {
+  let profileName = profileTitle.textContent;
+  let profilejob = profileDescription.textContent;
 
-    nameInput.value = profileName;
-    jobInput.value = profilejob;
-    popup.classList.add('popup_opened');
+  nameInput.value = profileName;
+  jobInput.value = profilejob;
+  popup.classList.add('popup_opened');
 }
 
 editButton.addEventListener('click', openPopup);
 closeButton.addEventListener('click', closePopup);
 popupForm.addEventListener('submit', handleFormSubmit);
-
-popup.addEventListener('click', closePopup);
-popupForm.addEventListener('click', function(event){
-    event.stopPropagation();
-});
