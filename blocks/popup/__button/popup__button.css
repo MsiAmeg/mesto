@@ -12,6 +12,7 @@
   border-radius: 2px;
   background-color: black;
   color: white;
+  cursor: pointer;
 }
 
 .popup__button:hover {

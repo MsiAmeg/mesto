@@ -11,10 +11,10 @@
   background-size: 22px;
   background-image: url("../../../images/add-Button.svg");
   margin-left: auto;
+  cursor: pointer;
 }
 
 .profile__add-button:hover {
-  cursor: pointer;
   opacity: .6;
   transition: .3s ease-in;
 }

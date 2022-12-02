@@ -12,10 +12,10 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
+  cursor: pointer;
 }
 
 .popup__close-button:hover {
-  cursor: pointer;
   opacity: .6;
   transition: .3s ease-in;
 }

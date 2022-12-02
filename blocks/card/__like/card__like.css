@@ -11,10 +11,10 @@
   background-size: contain;
   background-repeat: no-repeat;
   grid-area: description;
+  cursor: pointer;
 }
 
 .card__like:hover {
-  cursor: pointer;
   opacity: .5;
   transition: .3s ease-in;
 }

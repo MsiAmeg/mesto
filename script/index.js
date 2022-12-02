@@ -8,7 +8,6 @@ let popup = document.querySelector('.popup');
 let popupForm = document.querySelector('.popup__container');
 let nameInput = popup.querySelector('.popup__input_data_name');
 let jobInput = popup.querySelector('.popup__input_data_job');
-let popupSubmitButton = popup.querySelector('.popup__submit-button');
 
 function handleFormSubmit(event) {
   event.preventDefault();
