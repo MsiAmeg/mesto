@@ -59,20 +59,31 @@ function handleFormSubmitCard(event) {
   let imageName = AddCardNameInput.value;
   let imageUrl = AddCarImageInput.value;
 
-  createCard(imageName, imageUrl);
+  prependCard(imageName, imageUrl);
   AddCardNameInput.value = "";
   AddCarImageInput.value = "";
 }
 
 function createCard(name, url){
-  const CardTemplate = document.querySelector('#card').content;
-  let card = CardTemplate.querySelector('.card').cloneNode(true);
+  const cardTemplate = document.querySelector('#card').content;
+  let card = cardTemplate.querySelector('.card').cloneNode(true);
+  const likeBtn = card.querySelector('.card__like');
+  const trashBtn = card.querySelector('.card__trash');
 
+  likeBtn.addEventListener('click', () => likeBtn.classList.toggle('card__like_active'));
+  trashBtn.addEventListener('click', () => trashBtn.closest('.card').remove());
   card.querySelector('.card__title').textContent = name;
+  card.querySelector('.card__image').alt = name;
   card.querySelector('.card__image').src = url;
 
-  CardsContainer.prepend(card);
+  return card;
 }
+
+function prependCard(name, url){
+  CardsContainer.prepend(createCard(name, url));
+}
+
+initialCards.forEach(element => prependCard(element.name, element.link));
 
 function closePopup() {
   editProfilePopup.classList.remove('popup_opened');
