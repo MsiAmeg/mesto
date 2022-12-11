@@ -22,30 +22,6 @@ const initialCards = [
   {
     name: 'Байкал',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  },
-  {
-    name: 'Карачаевск',
-    link: '../images//image-1.jpg'
-  },
-  {
-    name: 'Гора Белуха',
-    link: '../images//image-2.jpg'
-  },
-  {
-    name: 'Долина Теней',
-    link: '../images//image-3.jpg'
-  },
-  {
-    name: 'Гора Синай',
-    link: '../images//image-4.jpg'
-  },
-  {
-    name: 'Конец Света',
-    link: '../images//image-5.jpg'
-  },
-  {
-    name: 'Озеро Башмак на реке Нил',
-    link: '../images//image-6.jpg'
   }
 ];
 
