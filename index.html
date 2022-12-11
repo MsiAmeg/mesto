@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
   <link rel="stylesheet" href="./pages/index.css">
   <title>Mesto</title>
 </head>
+
 <body class="container">
   <header class="header">
     <img src="./images/logo.svg" alt="логотип" class="header__logo">
@@ -22,38 +24,6 @@
       <button type="button" class="profile__add-button" aria-label="добавление записи"></button>
     </section>
     <section class="cards-grid">
-      <article class="card">
-        <img src="./images//image-1.jpg" alt="развалины древней церкви" class="card__image">
-        <h2 class="card__title">Карачаевск</h2>
-        <button type="button" class="card__like" aria-label="лайк"></button>
-      </article>
-      <article class="card">
-        <img src="./images/image-2.jpg" alt="гора в свете луны" class="card__image">
-        <h2 class="card__title">Гора Белуха</h2>
-        <button type="button" class="card__like" aria-label="лайк"></button>
-      </article>
-      <article class="card">
-        <img src="./images/image-3.jpg" alt="холмы окутанные теплыми тонами заката" class="card__image">
-        <h2 class="card__title">Долина Теней</h2>
-        <button type="button" class="card__like" aria-label="лайк"></button>
-      </article>
-      <article class="card">
-        <img src="./images/image-4.jpg" alt="дорога через оазис в пустыне" class="card__image">
-        <h2 class="card__title">Гора Синай</h2>
-        <button type="button" class="card__like" aria-label="лайк"></button>
-      </article>
-      <article class="card">
-        <img src="./images/image-5.jpg"
-          alt="ночные виды горных апексов с небом в звездах, сфотографированных с большой выдержкой так, что они создают яркие, белые линии движения земли относительно них"
-          class="card__image">
-        <h2 class="card__title">Конец Света</h2>
-        <button type="button" class="card__like" aria-label="лайк"></button>
-      </article>
-      <article class="card">
-        <img src="./images/image-6.jpg" alt="озеро в окружении осеннего леса, вид сверху" class="card__image">
-        <h2 class="card__title">Озеро Башмак на реке Нил</h2>
-        <button type="button" class="card__like" aria-label="лайк"></button>
-      </article>
     </section>
   </main>
   <footer class="footer">
@@ -65,21 +35,35 @@
       <form name="popup__form popup__form_edit-profile">
         <input type="text" required class="popup__input popup__input_data_name" name="job">
         <input type="text" required class="popup__input popup__input_data_job" name="fullName">
-        <button type="submit" class="popup__button popup__submit-button" aria-label="сохранение изменений">Сохранить</button>
+        <button type="submit" class="popup__button popup__submit-button"
+          aria-label="сохранение изменений">Сохранить</button>
       </form>
-      <button type="button" class="popup__close-button popup__close-button_edit-profile" aria-label="закрытие редактирования профиля"></button>
+      <button type="button" class="popup__close-button popup__close-button_edit-profile"
+        aria-label="закрытие редактирования профиля"></button>
     </div>
   </div>
   <div class="popup popup_add-card">
     <div class="popup__container popup__container_add-card">
       <h2 class="popup__title">Новое место</h2>
       <form name="popup__form popup__form_add-card">
-        <input type="text" placeholder="Название" required class="popup__input popup__input_data_card-title" name="cardTitle">
-        <input type="text" placeholder="Ссылка на картинку" required class="popup__input popup__input_data_image" name="imageUrl">
-        <button type="submit" class="popup__button popup__submit-button" aria-label="сохранение изменений">Создать</button>
+        <input type="text" placeholder="Название" required class="popup__input popup__input_data_card-title"
+          name="cardTitle">
+        <input type="text" placeholder="Ссылка на картинку" required class="popup__input popup__input_data_image"
+          name="imageUrl">
+        <button type="submit" class="popup__button popup__submit-button"
+          aria-label="сохранение изменений">Создать</button>
       </form>
-      <button type="button" class="popup__close-button popup__close-button_add-card" aria-label="закрытие редактирования профиля"></button>
+      <button type="button" class="popup__close-button popup__close-button_add-card"
+        aria-label="закрытие добавления карточки"></button>
     </div>
+  </div>
+  <div class="popup popup_large-image">
+    <figure class="popup__container_figure">
+      <img src="" alt="" class="popup__image">
+      <figcaption class="popup__caption">Без названия</figcaption>
+      <button type="button" class="popup__close-button popup__close-button_large-image"
+        aria-label="закрытие увеличенного изображения"></button>
+    </figure>
   </div>
   <template id="card">
     <article class="card">
@@ -91,4 +75,5 @@
   </template>
   <script src="./script/index.js"></script>
 </body>
+
 </html>

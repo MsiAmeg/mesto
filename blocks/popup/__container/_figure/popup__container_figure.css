@@ -1,0 +1,10 @@
+.popup__container_figure {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    max-width: 75vw;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    gap: 10px;
+}
