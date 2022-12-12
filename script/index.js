@@ -6,7 +6,7 @@ const profileInfo = document.querySelector('.profile__info');
 const profileTitle = profileInfo.querySelector('.profile__title');
 const profileDescription = profileInfo.querySelector('.profile__description');
 const editButton = document.querySelector('.profile__edit-button');
-const addCardBtn = document.querySelector('.profile__add-button');
+const BtnAddCard = document.querySelector('.profile__add-button');
 const closeBtns = document.querySelectorAll('.popup__close-button');
 
 const popupEditProfile = document.querySelector('.popup_edit-profile');
@@ -38,6 +38,7 @@ function handleFormSubmitCard(event) {
   const imageUrl = inputAddCardImage.value;
 
   prependCard(imageName, imageUrl);
+  closePopup(popupAddCard);
   inputAddCardName.value = "";
   inputAddCardImage.value = "";
 }
@@ -51,7 +52,10 @@ function createCard(name, url) {
 
   cardImage.alt = name;
   cardImage.src = url;
-  cardImage.addEventListener('click', () => openPopup(popupImage, name, url));
+  cardImage.addEventListener('click', () => {
+    setImageToPopup(name, url);
+    openPopup(popupImage);
+  });
   likeBtn.addEventListener('click', () => likeBtn.classList.toggle('card__like_active'));
   trashBtn.addEventListener('click', () => trashBtn.closest('.card').remove());
   card.querySelector('.card__title').textContent = name;
@@ -74,19 +78,8 @@ function insertProfileInfo() {
   inputEditProfileJob.value = profilejob;
 }
 
-function openPopup(element, name, url) {
-  if (element.classList.contains('popup_edit-profile')) {
-    insertProfileInfo();
-  }
-  if (element.classList.contains('popup_large-image')) {
-    setImageToPopup(name, url);
-  }
-
-  element.classList.add('popup_opened');
-}
-
-function openCardAddPopup() {
-  popupAddCard.classList.add('popup_opened');
+function openPopup(item) {
+  item.classList.add('popup_opened');
 }
 
 function setImageToPopup(name, url) {
@@ -95,19 +88,13 @@ function setImageToPopup(name, url) {
   popup_caption.textContent = name;
 }
 
-function openpopupImage(name, url) {
-  setImageToPopup(name, url);
-  popupImage.classList.add('popup_opened')
-}
-
-function closeCardAddPopup() {
-  popupAddCard.classList.remove('popup_opened');
-}
-
-editButton.addEventListener('click', () => openPopup(popupEditProfile));
+editButton.addEventListener('click', () => {
+  insertProfileInfo();
+  openPopup(popupEditProfile);
+});
 popupFormEditProfile.addEventListener('submit', handleFormSubmit);
 
-addCardBtn.addEventListener('click', () => openPopup(popupAddCard));
+BtnAddCard.addEventListener('click', () => openPopup(popupAddCard));
 popupAddCardForm.addEventListener('submit', handleFormSubmitCard);
 
 initialCards.forEach(element => prependCard(element.name, element.link));
