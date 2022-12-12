@@ -7,4 +7,5 @@
   object-fit: cover;
   box-sizing: border-box;
   grid-area: image;
+  overflow: hidden;
 }

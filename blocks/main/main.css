@@ -1,6 +1,7 @@
 .main {
   max-width: 880px;
   min-width: 320px;
+  min-height: 80vh;
   margin: 36px auto 67px;
   padding: 0;
 }
