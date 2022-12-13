@@ -6,7 +6,7 @@ const profileInfo = document.querySelector('.profile__info');
 const profileTitle = profileInfo.querySelector('.profile__title');
 const profileDescription = profileInfo.querySelector('.profile__description');
 const editButton = document.querySelector('.profile__edit-button');
-const BtnAddCard = document.querySelector('.profile__add-button');
+const btnAddCard = document.querySelector('.profile__add-button');
 const closeBtns = document.querySelectorAll('.popup__close-button');
 
 const popupEditProfile = document.querySelector('.popup_edit-profile');
@@ -94,7 +94,7 @@ editButton.addEventListener('click', () => {
 });
 popupFormEditProfile.addEventListener('submit', handleFormSubmit);
 
-BtnAddCard.addEventListener('click', () => openPopup(popupAddCard));
+btnAddCard.addEventListener('click', () => openPopup(popupAddCard));
 popupAddCardForm.addEventListener('submit', handleFormSubmitCard);
 
 initialCards.forEach(element => prependCard(element.name, element.link));
