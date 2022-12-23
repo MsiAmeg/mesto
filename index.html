@@ -33,8 +33,14 @@
     <div class="popup__container popup__container_edit-form">
       <h2 class="popup__title">Редактировать профиль</h2>
       <form name="popup__form popup__form_edit-profile">
-        <input type="text" required class="popup__input popup__input_data_name" name="job">
-        <input type="text" required class="popup__input popup__input_data_job" name="fullName">
+        <label class="popup__label">
+          <input type="text" required class="popup__input popup__input_data_name" name="job">
+          <span class="popup__input-error">Заполни, козел</span>
+        </label>
+        <label class="popup__label">
+          <input type="text" required class="popup__input popup__input_data_job" name="fullName">
+          <span class="popup__input-error">Заполни, козел</span>
+        </label>
         <button type="submit" class="popup__button popup__submit-button"
           aria-label="сохранение изменений">Сохранить</button>
       </form>
@@ -46,10 +52,16 @@
     <div class="popup__container popup__container_add-card">
       <h2 class="popup__title">Новое место</h2>
       <form name="popup__form popup__form_add-card">
-        <input type="text" placeholder="Название" required class="popup__input popup__input_data_card-title"
-          name="cardTitle">
-        <input type="text" placeholder="Ссылка на картинку" required class="popup__input popup__input_data_image"
-          name="imageUrl">
+        <label class="popup__label">
+          <input type="text" placeholder="Название" required class="popup__input popup__input_data_card-title"
+            name="cardTitle">
+            <span class="popup__input-error">Заполни, козел</span>
+        </label>
+        <label class="popup__label">
+          <input type="text" placeholder="Ссылка на картинку" required class="popup__input popup__input_data_image"
+            name="imageUrl">
+            <span class="popup__input-error">Заполни, козел</span>
+        </label>
         <button type="submit" class="popup__button popup__submit-button"
           aria-label="сохранение изменений">Создать</button>
       </form>
@@ -67,7 +79,8 @@
   </div>
   <template id="card">
     <article class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/ru/a/ac/No_image_available.svg" alt="изображение добавлено пользователем" class="card__image">
+      <img src="https://upload.wikimedia.org/wikipedia/ru/a/ac/No_image_available.svg"
+        alt="изображение добавлено пользователем" class="card__image">
       <h2 class="card__title">Без названия</h2>
       <button type="button" class="card__like" aria-label="лайк"></button>
       <button type="button" class="card__trash"></button>
