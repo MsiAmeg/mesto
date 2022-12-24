@@ -1,6 +1,9 @@
 import { initialCards } from "./cardsArray.js";
+import { enableValidation } from "./validate.js";
 
 const cardsContainer = document.querySelector('.cards-grid');
+const popups = document.querySelectorAll('.popup');
+const containerPopups = document.querySelectorAll('.popup__container');
 
 const profileInfo = document.querySelector('.profile__info');
 const profileTitle = profileInfo.querySelector('.profile__title');
@@ -88,14 +91,38 @@ function setImageToPopup(name, url) {
   popup_caption.textContent = name;
 }
 
+enableValidation({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input-error',
+  errorClass: 'popup__input-error_visible'
+});
+
 editButton.addEventListener('click', () => {
   insertProfileInfo();
   openPopup(popupEditProfile);
 });
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === "Escape"){
+    popups.forEach((item) => {
+      if (item.classList.contains('popup_opened')){
+        closePopup(item);
+      };
+    });
+  };
+});
+
 popupFormEditProfile.addEventListener('submit', handleFormSubmit);
 
 btnAddCard.addEventListener('click', () => openPopup(popupAddCard));
 popupAddCardForm.addEventListener('submit', handleFormSubmitCard);
 
 initialCards.forEach(element => prependCard(element.name, element.link));
+
+
+popups.forEach((item) => item.addEventListener('click', () => closePopup(item)));
+containerPopups.forEach(item => item.addEventListener('click', (event) => event.stopPropagation()));
 closeBtns.forEach(item => item.addEventListener('click', () => closePopup(item)));

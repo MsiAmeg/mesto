@@ -8,5 +8,11 @@
   font-size: 12px;
   line-height: 15px;
   max-width: 358px;
-  opacity: 1;
+  opacity: 0;
+}
+
+@media screen and (max-width: 540px) {
+  .popup__input-error {
+    margin: 0 22px;
+  }
 }
