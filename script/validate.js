@@ -1,13 +1,4 @@
 export function enableValidation(config) {
-  const cfg = {
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__button',
-    inactiveButtonClass: 'popup__button_disabled',
-    inputErrorClass: 'popup__input-error',
-    errorClass: 'popup__input-error_visible'
-  };
-
   const hasInvalidInput = (inputList) => {
     return inputList.some((inputEl) => {
       return !inputEl.validity.valid;
@@ -17,9 +8,11 @@ export function enableValidation(config) {
   const toggleButtonState = (inputList, buttonForm) => {
     if (hasInvalidInput(inputList)) {
       buttonForm.classList.add(config.inactiveButtonClass);
+      buttonForm.setAttribute("disabled", "");
     }
     else {
       buttonForm.classList.remove(config.inactiveButtonClass);
+      buttonForm.removeAttribute("disabled");
     }
   };
 
@@ -66,4 +59,10 @@ export function enableValidation(config) {
     }
   };
 
+};
+
+export function disableSubmitBtn(submitBtn, disableClass) {
+  console.log('asdasdasd');
+  submitBtn.classList.add(disableClass);
+  submitBtn.setAttribute("disabled", "");
 };
