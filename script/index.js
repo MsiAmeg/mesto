@@ -113,8 +113,8 @@ editButton.addEventListener('click', () => {
 
 const closeByEsc = (event) => {
     if (event.key === "Escape"){
-      document.querySelector('.popup_opened').classList.remove('popup_opened');
-      document.removeEventListener('keydown', closeByEsc);
+      const popup = document.querySelector('.popup_opened');
+      closePopup(popup);
   };
 };
 

@@ -62,7 +62,6 @@ export function enableValidation(config) {
 };
 
 export function disableSubmitBtn(submitBtn, disableClass) {
-  console.log('asdasdasd');
   submitBtn.classList.add(disableClass);
   submitBtn.setAttribute("disabled", "");
 };
