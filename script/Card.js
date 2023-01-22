@@ -17,7 +17,7 @@ export class Card {
     this._likeBtn = this._element.querySelector('.card__like');
     this._trashBtn = this._element.querySelector('.card__trash');
 
-    this._element.querySelector('.card__image').addEventListener('click', () => {
+    this._cardImage.addEventListener('click', () => {
       this._handleCardClick(this._name, this._link);
     });
 

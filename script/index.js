@@ -23,6 +23,11 @@ const popupAddCardForm = document.forms["card-form"];
 const inputAddCardName = popupAddCard.querySelector('.popup__input_data_card-title');
 const inputAddCardImage = popupAddCard.querySelector('.popup__input_data_image');
 
+
+const popupImage = document.querySelector('.popup_large-image');
+const popupImagePic = popupImage.querySelector('.popup__image');
+const popupCaption = popupImage.querySelector('.popup__caption');
+
 const validationParams = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -61,13 +66,9 @@ function createCard(name, link) {
 }
 
 function handleCardClick(name, link) {
-    const popupImage = document.querySelector('.popup_large-image');
-    const popup_image = popupImage.querySelector('.popup__image');
-    const popup_caption = popupImage.querySelector('.popup__caption');
-
-    popup_image.src = link;
-    popup_image.alt = name;
-    popup_caption.textContent = name;
+    popupImagePic.src = link;
+    popupImagePic.alt = name;
+    popupCaption.textContent = name;
     openPopup(popupImage);
   }
 
@@ -107,7 +108,6 @@ popupFormEditProfile.addEventListener('submit', handleProfileFormSubmit);
 
 btnAddCard.addEventListener('click', () => {
   addCardValidation.resetValidation();
-  addCardValidation.disableSubmitBtn();
   openPopup(popupAddCard);
 });
 popupAddCardForm.addEventListener('submit', handleCardFormSubmit);
@@ -130,4 +130,3 @@ popups.forEach((item) => item.addEventListener('mousedown', (event) => {
     closePopup(item);
   }
 }));
-closeBtns.forEach(item => item.addEventListener('click', () => closePopup(item)));

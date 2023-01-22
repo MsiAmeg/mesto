@@ -1,7 +1,7 @@
 export class FormValidator {
   constructor(config, formElement){
     this._config = config;
-    this._formSelector = formElement;
+    this._formElement = formElement;
   }
 
   enableValidation = () => {
@@ -22,8 +22,8 @@ export class FormValidator {
   }
 
   _setEventListeners = () => {
-    this._inputList = Array.from(this._formSelector.querySelectorAll(this._config.inputSelector));
-    this._buttonForm = this._formSelector.querySelector(this._config.submitButtonSelector);
+    this._inputList = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
+    this._buttonForm = this._formElement.querySelector(this._config.submitButtonSelector);
     this._toggleButtonState();
 
     this._inputList.forEach((inputEl) => {
@@ -51,7 +51,7 @@ export class FormValidator {
   };
 
     _showInputError = (inputEl, errorMessage) => {
-      const errorEl = this._formSelector.querySelector(`.${inputEl.id}-error`);
+      const errorEl = this._formElement.querySelector(`.${inputEl.id}-error`);
       errorEl.textContent = errorMessage;
       if (inputEl.validity.patternMismatch) {
         errorEl.textContent = `${errorMessage} Например: https://cat.png`;
@@ -60,7 +60,7 @@ export class FormValidator {
     };
 
     _hideInputError = (inputEl, errorMessage) => {
-      const errorEl = this._formSelector.querySelector(`.${inputEl.id}-error`);
+      const errorEl = this._formElement.querySelector(`.${inputEl.id}-error`);
       errorEl.textContent = "";
       errorEl.classList.remove(this._config.errorClass);
     };
