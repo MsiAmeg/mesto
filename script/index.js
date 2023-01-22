@@ -11,7 +11,6 @@ const profileTitle = profileInfo.querySelector('.profile__title');
 const profileDescription = profileInfo.querySelector('.profile__description');
 const editButton = document.querySelector('.profile__edit-button');
 const btnAddCard = document.querySelector('.profile__add-button');
-const closeBtns = document.querySelectorAll('.popup__close-button');
 
 const popupEditProfile = document.querySelector('.popup_edit-profile');
 const popupFormEditProfile = document.forms["profile-form"];
