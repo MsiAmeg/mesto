@@ -1,6 +1,7 @@
-import { initialCards } from "./cardsArray.js";
-import { Card} from "./Card.js";
-import { FormValidator } from "./FormValidator.js";
+import { initialCards } from "../components/cardsArray.js";
+import { Card} from "../components/Card.js";
+import { FormValidator } from "../components/FormValidator.js";
+import './index.css';
 
 const cardsContainer = document.querySelector('.cards-grid');
 const popups = document.querySelectorAll('.popup');
