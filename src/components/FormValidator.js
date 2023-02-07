@@ -14,7 +14,7 @@ export class FormValidator {
   };
 
   resetValidation() {
-    this._toggleButtonState();
+    this.disableSubmitBtn();
 
     this._inputList.forEach((inputElement) => {
       this._hideInputError(inputElement);
@@ -53,9 +53,6 @@ export class FormValidator {
     _showInputError = (inputEl, errorMessage) => {
       const errorEl = this._formElement.querySelector(`.${inputEl.id}-error`);
       errorEl.textContent = errorMessage;
-      if (inputEl.validity.patternMismatch) {
-        errorEl.textContent = `${errorMessage} Например: https://cat.png`;
-      }
       errorEl.classList.add(this._config.errorClass);
     };
 

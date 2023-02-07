@@ -8,4 +8,7 @@
   box-sizing: border-box;
   grid-area: image;
   overflow: hidden;
+  cursor: pointer;
+  background-color: black;
+  color: white;
 }

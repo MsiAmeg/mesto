@@ -11,7 +11,7 @@
   box-sizing: border-box;
 }
 
-.popup__input:invalid {
+.popup__input:not(:placeholder-shown):invalid {
   border-bottom: 1px solid #FF0000;
 }
 

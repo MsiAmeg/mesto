@@ -1,6 +1,7 @@
-import { initialCards } from "../components/cardsArray.js";
+import { initialCards } from "../utils/cardsArray.js";
 import { FormValidator } from "../components/FormValidator.js";
 import Section  from "../components/Section.js";
+import { Card } from "../components/Card.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
@@ -12,16 +13,30 @@ import {editButton,
   popupAddCardForm,
   inputAddCardName,
   inputAddCardImage,
-  validationParams} from '../utils/constants.js'
-import {
-  createCard,
-  insertProfileInfo} from '../utils/utils.js';
+  validationParams} from '../utils/constants.js';
 import './index.css';
+
+
+function createCard(name, link) {
+  const card = new Card(name, link, "#card", handleCardClick);
+  const cardEl = card.generateCard();
+  return cardEl;
+}
+
+function handleCardClick(name, link) {
+  imageDefaultPopup.open(name, link);
+}
+
+function insertProfileInfo({nameInput, jobInput}) {
+  inputEditProfileName.value = nameInput;
+  inputEditProfileJob.value = jobInput;
+}
+
 
 
 editButton.addEventListener('click', () => {
   const data = userInfo.getUserInfo();
-  insertProfileInfo({data});
+  insertProfileInfo(data);
   profileValidation.resetValidation();
   profileValidation.disableSubmitBtn();
   profilePopup.open();
@@ -42,7 +57,7 @@ const cardsList = new Section({
 
 cardsList.renderItems();
 
-const userInfo = new UserInfo({profileName: '.profile__title', profileInfo: '.profile__description'});
+const userInfo = new UserInfo({profileNameSelector: '.profile__title', profileInfoSelector: '.profile__description'});
 
 const profileValidation = new FormValidator(validationParams, popupFormEditProfile);
 profileValidation.enableValidation();
@@ -51,16 +66,15 @@ const addCardValidation = new FormValidator(validationParams, popupAddCardForm);
 addCardValidation.enableValidation();
 
 
-const profilePopup = new PopupWithForm('.popup_edit-profile', {handleFormSumbit: (event) => {
+const profilePopup = new PopupWithForm('.popup_edit-profile', {handleFormSumbit: (event, {job, fullName}) => {
   event.preventDefault();
   userInfo.setUserInfo({
-    name: inputEditProfileName.value,
-    job: inputEditProfileJob.value
+    name: fullName,
+    job: job
   });
 
   profilePopup.close();
 }});
-profilePopup.setEventListeners();
 
 const cardPopup = new PopupWithForm('.popup_add-card', {handleFormSumbit: (event) => {
   event.preventDefault();
@@ -74,7 +88,5 @@ const cardPopup = new PopupWithForm('.popup_add-card', {handleFormSumbit: (event
 
   event.target.reset();
 }});
-cardPopup.setEventListeners();
 
-export const imageDefaultPopup = new PopupWithImage('.popup_large-image');
-imageDefaultPopup.setEventListeners();
+const imageDefaultPopup = new PopupWithImage('.popup_large-image');

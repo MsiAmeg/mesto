@@ -3,22 +3,20 @@ export class PopupWithForm extends Popup {
   constructor(popupSelector, {handleFormSumbit}){
     super(popupSelector);
     this._handleFormSumbit = handleFormSumbit;
-    this._popupImagePic = this._popupElement.querySelector('.popup__image');
-    this._popupCaption = this._popupElement.querySelector('.popup__caption');
     this._popupForm = this._popupElement.querySelector('form');
+    this._formInputs = Array.from(this._popupElement.querySelectorAll('.popup__input'));
   }
   _getInputValues(){
-    this._formInputs = Array.from(this._popupElement.querySelectorAll('.popup__input'));
-    this._inputValues = {};
+    const _inputValues = {};
     this._formInputs.forEach((inputEl) => {
-      this._inputValues[inputEl.id] = inputEl.value;
+      _inputValues[inputEl.name] = inputEl.value;
     });
-    return this._inputValues;
+    return _inputValues;
   }
 
   setEventListeners(){
     super.setEventListeners();
-    this._popupElement.addEventListener('submit', this._handleFormSumbit);
+    this._popupElement.addEventListener('submit', (event) => {this._handleFormSumbit(event, this._getInputValues())});
   }
 
   close(){

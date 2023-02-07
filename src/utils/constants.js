@@ -13,7 +13,6 @@ const inputAddCardImage = popupAddCard.querySelector('.popup__input_data_image')
 
 
 const validationParams = {
-  formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__button',
   inactiveButtonClass: 'popup__button_disabled',
