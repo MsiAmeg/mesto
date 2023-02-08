@@ -66,8 +66,7 @@ const addCardValidation = new FormValidator(validationParams, popupAddCardForm);
 addCardValidation.enableValidation();
 
 
-const profilePopup = new PopupWithForm('.popup_edit-profile', {handleFormSumbit: (event, {job, fullName}) => {
-  event.preventDefault();
+const profilePopup = new PopupWithForm('.popup_edit-profile', {handleFormSumbit: ({job, fullName}) => {
   userInfo.setUserInfo({
     name: fullName,
     job: job
@@ -76,17 +75,13 @@ const profilePopup = new PopupWithForm('.popup_edit-profile', {handleFormSumbit:
   profilePopup.close();
 }});
 
-const cardPopup = new PopupWithForm('.popup_add-card', {handleFormSumbit: (event) => {
-  event.preventDefault();
-
+const cardPopup = new PopupWithForm('.popup_add-card', {handleFormSumbit: () => {
   const imageName = inputAddCardName.value;
   const imageUrl = inputAddCardImage.value;
   const cardEl = createCard(imageName, imageUrl);
 
   cardsList.setItem(cardEl);
   cardPopup.close();
-
-  event.target.reset();
 }});
 
 const imageDefaultPopup = new PopupWithImage('.popup_large-image');

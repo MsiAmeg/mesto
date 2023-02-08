@@ -4,11 +4,21 @@ export class Card {
     this._link = link;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
+    this._likeCard = this._likeCard.bind(this);
+    this._deleteCard = this._deleteCard.bind(this);
   }
 
   _getTemplate = () => {
     const cardEl = document.querySelector(this._templateSelector).content.querySelector('.card').cloneNode(true);
     return cardEl;
+  }
+
+  _likeCard() {
+    this._likeBtn.classList.toggle('card__like_active')
+  }
+
+  _deleteCard(){
+    this._element.remove();
   }
 
   _setEventListeners = () => {
@@ -21,8 +31,8 @@ export class Card {
       this._handleCardClick(this._name, this._link);
     });
 
-    this._likeBtn.addEventListener('click', () => this._likeBtn.classList.toggle('card__like_active'));
-    this._trashBtn.addEventListener('click', () => this._trashBtn.closest('.card').remove());
+    this._likeBtn.addEventListener('click', this._likeCard);
+    this._trashBtn.addEventListener('click', this._deleteCard);
   }
 
   generateCard = () => {
