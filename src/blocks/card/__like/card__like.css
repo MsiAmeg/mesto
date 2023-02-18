@@ -4,13 +4,12 @@
   height: 19px;
   box-sizing: border-box;
   background-color: transparent;
-  margin: 30px 20px 30px auto;
+  margin: 0;
   padding: 0;
   background-image: url("../../../images/like.svg");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  grid-area: description;
   cursor: pointer;
 }
 

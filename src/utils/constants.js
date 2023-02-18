@@ -1,10 +1,14 @@
 const editButton = document.querySelector('.profile__edit-button');
+const editAvatarButton = document.querySelector('.profile__avatar');
 const btnAddCard = document.querySelector('.profile__add-button');
 
 const popupEditProfile = document.querySelector('.popup_edit-profile');
 const popupFormEditProfile = document.forms["profile-form"];
 const inputEditProfileName = popupEditProfile.querySelector('.popup__input_data_name');
 const inputEditProfileJob = popupEditProfile.querySelector('.popup__input_data_job');
+
+
+const popupEditAvatar = document.querySelector('.popup_edit-avatar');
 
 const popupAddCard = document.querySelector('.popup_add-card');
 const popupAddCardForm = document.forms["card-form"];
@@ -29,5 +33,7 @@ export {
   popupAddCardForm,
   inputAddCardName,
   inputAddCardImage,
-  validationParams
+  validationParams,
+  editAvatarButton,
+  popupEditAvatar
 };

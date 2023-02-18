@@ -14,7 +14,9 @@
   </header>
   <main class="main">
     <section class="profile">
-      <img src="<%=require('./images/avatar.jpg')%>" alt="фотография профиля" class="profile__avatar">
+      <div class="profile__avatar">
+        <img src="<%=require('./images/avatar.jpg')%>" alt="фотография профиля" class="profile__picture">
+      </div>
       <div class="profile__info">
         <h1 class="profile__title">Жак-Ив Кусто</h1>
         <p class="profile__description">Исследователь океана</p>
@@ -47,6 +49,21 @@
         aria-label="закрытие редактирования профиля"></button>
     </div>
   </div>
+  <div class="popup popup_edit-avatar">
+    <div class="popup__container popup__container_edit-avatar-form">
+      <h2 class="popup__title popup__title_avatar">Обновить аватар</h2>
+      <form class="popup__form popup__form_edit-avatar" name="edit-avatar-form" novalidate>
+        <label class="popup__label">
+          <input type="text" placeholder="ссылка на аватар" required class="popup__input popup__input_data_avatar" id="avatar-input" name="avatar" type="url" pattern="https?://.+">
+          <span class="popup__input-error avatar-input-error"></span>
+        </label>
+        <button type="submit" class="popup__button popup__button_edit-avatar popup__submit-button"
+          aria-label="сохранение изменений">Сохранить</button>
+      </form>
+      <button type="button" class="popup__close-button popup__close-button_edit-profile"
+        aria-label="закрытие редактирования аватара"></button>
+    </div>
+  </div>
   <div class="popup popup_add-card">
     <div class="popup__container popup__container_add-card">
       <h2 class="popup__title">Новое место</h2>
@@ -74,12 +91,26 @@
         aria-label="закрытие увеличенного изображения"></button>
     </figure>
   </div>
+  <div class="popup popup_delete-card">
+    <div class="popup__container popup__container_delete-card">
+      <h2 class="popup__title popup__title_delete-card">Вы уверены?</h2>
+      <form class="popup__form popup__form_delete-card" name="delete-card-form" novalidate>
+        <button type="submit" class="popup__button popup__button_delete-card popup__submit-button"
+          aria-label="удаление карточки">Да</button>
+      </form>
+      <button type="button" class="popup__close-button popup__close-button_delete-card"
+        aria-label="закрытие удаления карточки"></button>
+    </div>
+  </div>
   <template id="card">
     <article class="card">
       <img src="#"
         alt="изображение добавлено пользователем" class="card__image">
       <h2 class="card__title">Без названия</h2>
-      <button type="button" class="card__like" aria-label="лайк"></button>
+      <div class="card__action">
+        <button type="button" class="card__like" aria-label="лайк"></button>
+        <span class="card__like-count">0</span>
+      </div>
       <button type="button" class="card__trash"></button>
     </article>
   </template>
