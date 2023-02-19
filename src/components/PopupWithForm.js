@@ -21,9 +21,15 @@ export class PopupWithForm extends Popup {
   }
 
   _formSubmit(event){
-    this._submitBtnText('Сохранение...');
     event.preventDefault();
-    this._handleFormSumbit(this._getInputValues());
+    const initialText = this._submitBtn.textContent;
+
+    this._submitBtnText('Сохранение...');
+    this._handleFormSumbit(this._getInputValues())
+    .then(() => this.close())
+    .finally(() => {
+      this._submitBtnText(initialText);
+    });
   }
 
   setEventListeners(){
@@ -40,6 +46,5 @@ export class PopupWithForm extends Popup {
   close(){
     super.close();
     this._popupForm.reset();
-    this._submitBtnText('Сохранить');
   }
 }

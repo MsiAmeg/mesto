@@ -23,7 +23,17 @@ export class Card {
 
   _likeCard() {
     const isLiked = this._likeBtn.classList.contains('card__like_active');
-    this._handleLikeClick(this._cardId, isLiked, this._likeBtn, this._likeCountEl);
+    this._handleLikeClick(this._cardId, isLiked, this);
+  }
+
+  likeClick(likes) {
+    this._likeBtn.classList.add('card__like_active');
+    this._likeCountEl.textContent = likes;
+  }
+
+  unlikeClick(likes) {
+      this._likeBtn.classList.remove('card__like_active');
+      this._likeCountEl.textContent = likes;
   }
 
   _deleteCard(){

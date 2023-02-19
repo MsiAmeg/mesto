@@ -45,12 +45,11 @@ function handleDeleteCard(cardId, cardEl) {
   deleteCardPopup.open(cardId, cardEl);
 }
 
-function handleLikeClick(cardId, isLiked, likeBtn, likeCountEl) {
+function handleLikeClick(cardId, isLiked, cardEl) {
   if (isLiked) {
     api.deleteLike(cardId)
     .then((element) =>{
-      likeBtn.classList.remove('card__like_active');
-      likeCountEl.textContent = element.likes.length;
+      cardEl.unlikeClick(element.likes.length);
     })
     .catch((err) => {
       console.log(err);
@@ -58,8 +57,7 @@ function handleLikeClick(cardId, isLiked, likeBtn, likeCountEl) {
   } else {
     api.setLike(cardId)
     .then((element) =>{
-      likeBtn.classList.add('card__like_active');
-      likeCountEl.textContent = element.likes.length;
+      cardEl.likeClick(element.likes.length);
     })
     .catch((err) => {
       console.log(err);
@@ -72,35 +70,6 @@ function insertProfileInfo({nameInput, jobInput}) {
   inputEditProfileJob.value = jobInput;
 }
 
-api.getUserData()
-.then(data => {
-  userInfo.setUserAvatar(data);
-  userInfo.setUserInfo(data);
-  userId = data._id;
-})
-.catch((err) => {
-  console.log(err);
-});
-
-
-api.getInitialCards()
-.then(data => {
-  console.log(data);
-  cardsList = new Section({
-    data: data,
-    renderer: (element) => {
-      const cardEl = createCard(element.name, element.link, element.owner._id, userId, element._id, element.likes);
-      cardsList.setItem(cardEl);
-    },
-  }, '.cards-grid');
-  cardsList.renderItems();
-})
-.catch((err) => {
-  console.log(err);
-});
-
-
-
 
 editButton.addEventListener('click', () => {
   const data = userInfo.getUserInfo();
@@ -111,7 +80,8 @@ editButton.addEventListener('click', () => {
 });
 
 editAvatarButton.addEventListener('click', () => {
-  addCardValidation.resetValidation();
+  avatarValidation.resetValidation();
+  avatarValidation.disableSubmitBtn();
   profileAvatarPopup.open();
 });
 
@@ -136,7 +106,7 @@ avatarValidation.enableValidation();
 
 
 const profilePopup = new PopupWithForm('.popup_edit-profile', {handleFormSumbit: ({job, fullName}) => {
-  api.setUserData({
+  return api.setUserData({
     name: fullName,
     about: job
   })
@@ -145,7 +115,6 @@ const profilePopup = new PopupWithForm('.popup_edit-profile', {handleFormSumbit:
       name: fullName,
       about: job
     });
-    profilePopup.close();
   })
   .catch((err) => {
     console.log(err);
@@ -153,10 +122,9 @@ const profilePopup = new PopupWithForm('.popup_edit-profile', {handleFormSumbit:
 }});
 
 const profileAvatarPopup = new PopupWithForm('.popup_edit-avatar', {handleFormSumbit: ({avatar}) => {
-  api.setUserAvatar({avatar})
+  return api.setUserAvatar({avatar})
   .then(() => {
     userInfo.setUserAvatar({avatar});
-    profileAvatarPopup.close();
   })
   .catch((err) => {
     console.log(err);
@@ -166,12 +134,11 @@ const profileAvatarPopup = new PopupWithForm('.popup_edit-avatar', {handleFormSu
 const cardPopup = new PopupWithForm('.popup_add-card', {handleFormSumbit: () => {
   const name = inputAddCardName.value;
   const link = inputAddCardImage.value;
-  api.setCard({name, link})
+  return api.setCard({name, link})
   .then((element) => {
     const cardEl = createCard(element.name, element.link, element.owner._id, userId, element._id, element.likes);
 
     cardsList.setItem(cardEl);
-    cardPopup.close();
   })
   .catch((err) => {
     console.log(err);
@@ -189,5 +156,29 @@ const deleteCardPopup = new PopupDelete('.popup_delete-card', {handleFormSumbit:
   });
 }});
 
-
 const imageDefaultPopup = new PopupWithImage('.popup_large-image');
+
+
+const userPromise = api.getUserData();
+const cardPromise = api.getInitialCards();
+
+Promise.all([userPromise, cardPromise])
+  .then(([userData, cards]) => {
+    userInfo.setUserAvatar(userData);
+    userInfo.setUserInfo(userData);
+    userId = userData._id;
+
+
+
+    cardsList = new Section({
+      data: cards,
+      renderer: (element) => {
+        const cardEl = createCard(element.name, element.link, element.owner._id, userId, element._id, element.likes);
+        cardsList.setItem(cardEl);
+      },
+    }, '.cards-grid');
+    cardsList.renderItems();
+  })
+  .catch(err => {
+    console.log(err);
+  });

@@ -1,16 +1,16 @@
-const renderResponse = (res) => {
-  if (res.ok) {
-    return res.json();
-  }
-
-  return Promise.reject(`Ошибка: ${res.status}`);
-}
-
 export class Api {
   constructor(config){
     this._url = config.url;
     this._authorization = config.authorization;
     this._cohort = config.cohort;
+  }
+
+  _renderResponse(res) {
+    if (res.ok) {
+      return res.json();
+    }
+
+    return Promise.reject(`Ошибка: ${res.status}`);
   }
 
   getInitialCards() {
@@ -19,7 +19,7 @@ export class Api {
         authorization: this._authorization
       }
     })
-    .then(renderResponse)
+    .then(this._renderResponse)
   }
 
   setCard({name, link}){
@@ -34,7 +34,7 @@ export class Api {
         link
       })
     })
-    .then(renderResponse)
+    .then(this._renderResponse)
   }
 
   deleteCard(cardId){
@@ -44,7 +44,7 @@ export class Api {
         authorization: this._authorization
       }
     })
-    .then(renderResponse)
+    .then(this._renderResponse)
   }
 
   getUserData(){
@@ -53,7 +53,7 @@ export class Api {
         authorization: this._authorization
       }
     })
-    .then(renderResponse)
+    .then(this._renderResponse)
   }
 
   setUserData({name, about}){
@@ -68,7 +68,7 @@ export class Api {
         about
       })
     })
-    .then(renderResponse)
+    .then(this._renderResponse)
   }
 
   setUserAvatar({avatar}){
@@ -82,7 +82,7 @@ export class Api {
         avatar
       })
     })
-    .then(renderResponse)
+    .then(this._renderResponse)
   }
 
 
@@ -94,7 +94,7 @@ export class Api {
         'Content-Type': 'application/json'
       }
     })
-    .then(renderResponse)
+    .then(this._renderResponse)
   }
 
   deleteLike(cardId){
@@ -105,7 +105,7 @@ export class Api {
         'Content-Type': 'application/json'
       }
     })
-    .then(renderResponse)
+    .then(this._renderResponse)
   }
 }
 
